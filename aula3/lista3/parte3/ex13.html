@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Gastos com Transporte</title>
+</head>
+<body>
+    insira o valor da passagem: <br> <input type="number" id="id_valor"> <br>
+    insira a quantidade em km da distancia: <br> <input type="number" id="id_dist"><br>
+    insira a quantidade de viagens por mes: <br> <input type="number" id="id_qtdvg"> <br>
+    <button onclick="calcular()">calcular VT</button>
+    <div id="mensagem"></div>
+</body>
+<script>
+    function calcular(){
+        let valor_onibus = Number(id_valor.value);
+        let dist = Number(id_dist.value);
+        let qtdvg = Number(id_qtdvg.value);
+        let uber = qtdvg*0.1;
+        let onibus = qtdvg - uber;
+        let valor_uber = dist * 0.75;
+        let total = (onibus * valor_onibus) + (uber + valor_uber)
+        mensagem.innerHTML = `Você vai gastar R$ ${total} por mês com transporte.  `
+    }
+</script>
+</html>
+

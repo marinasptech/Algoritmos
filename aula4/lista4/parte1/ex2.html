@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>consumo anual de refrigerante</title>
+</head>
+<body>
+    <input type="text" id="id_refri" placeholder="digite a quantidade de refri">
+    <br> <button onclick="calcular()">Quantos refris?</button>
+    <p id="mensagem"></p>
+</body>
+<script>
+    function calcular(){
+        let refri = Number(id_refri.value);
+        qtd = refri*365;
+        mensagem.innerHTML= `Você bebe ${qtd} latinhas por ano`
+        if(qtd >= 500){
+            mensagem.innerHTML += "\nCuidado com a diabetes!"  
+        }
+    }
+</script>
+</html>

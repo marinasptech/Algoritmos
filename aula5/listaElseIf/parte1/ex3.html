@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensação Térmica</title>
+</head>
+<body>
+    <h4> insira quantos graus está atualmente </h4>
+    <input type="number" id="id_graus">
+    <button onclick="analisar()">Analisar temperatura</button> <br>
+        <h4 id="id_resultado"></h4>
+</body>
+<script>
+    function analisar(){
+        let graus = id_graus.value;
+        if (graus < 14){
+            id_resultado.innerHTML = "Congelante";
+        } else if (graus <= 21){
+            id_resultado.innerHTML = " Com frio";
+        } else if(graus <= 24){
+            id_resultado.innerHTML = "Confortavel";
+        } else if(graus <= 31){
+            id_resultado.innerHTML = "Com calor";
+        } else if(graus > 31){
+            id_resultado.innerHTML = "Calor escaldante";
+        } else{
+            id_resultado.innerHTML = "digite valor valido";
+        } 
+        
+    }
+</script>
+</html>

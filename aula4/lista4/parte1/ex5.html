@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Conta de Luz</title>
+</head>
+<body>
+    <input type="text" id="id_qtd_mes" placeholder="quantidade de KWh consumida no mês ">
+    <button onclick="calcular()"> calcular conta de luz</button>
+</body>
+<script>
+    function calcular(){
+        let qtd_mes = Number(id_qtd_mes.value);
+        valor = qtd_mes*0.85
+        if(qtd_mes < 100){
+            res = valor - (valor*0.1)
+            alert(`o valor a ser pago é ${res}`)
+        } 
+        alert(`o valor a ser pago é ${valor}`)
+    }
+</script>
+</html>

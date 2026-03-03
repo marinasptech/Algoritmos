@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economia com Bilhete Único</title>
+</head>
+<body>
+    digite o valor da passagem: <input type="text" id="id_valor">
+    digite o número de viagens mensais: <input type="text" id="id_viagem">
+     <button onclick="economizar()"> ver economia</button> 
+</body>
+<script>
+    function economizar(){
+        let valor = Number(id_valor.value);
+        let viagem = Number(id_viagem.value);
+        let ant = valor*viagem
+        economia = ant - (ant/2)
+        alert("Você economizará R$ " + economia +" por mês")
+    }
+    //"Você economizará R$X por mês", onde X é o valor economizado.
+</script>
+</html>

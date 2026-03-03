@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cálculo da Média na SPTech </title>
+</head>
+<body>
+    digite a nota da continuada: <input type="text" id="id_continuada"> <br>
+    digite a nota de pesquisa e inovação: <input type="text" id="id_pi"><br>
+    insira seu nome: <input type="text" id="id_nome">
+    <button onclick="calcular()"> media</button>
+    <div id="resultado"></div>
+</body>
+<script>
+    function calcular(){
+        let nome = String(id_nome.value);
+        let cont = Number (id_continuada.value);
+        let pi = Number(id_pi.value);
+        let media = (cont*0.4) + (pi*0.6)
+        resultado.innerHTML = "A média de " + nome + " será de " + media;
+    }
+    
+</script>
+</html>

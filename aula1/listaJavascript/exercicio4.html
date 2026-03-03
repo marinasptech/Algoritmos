@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Endereço</h2>
+
+Rua/Avenida/Vila: <input type="text" id="rua"><br><br>
+Número da Casa: <input type="number" id="numero"><br><br>
+
+<button onclick="mostrarEndereco()">Onde eu moro</button>
+
+<script>
+    function mostrarEndereco() {
+    let nome_rua = rua.value;
+    let num_rua = numero.value;
+
+    alert("Seu logradouro é " + nome_rua + "\n O número do seu logradouro é " + num_rua);
+}
+</script>
+</body>
+</html>

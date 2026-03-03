@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="id_idade" placeholder="digite sua idade"> <br>
+     <input type="number" id="id_qtd_pets" placeholder="quantos pets você tem?">
+    <button onclick="calcular()">calcular</button>
+    <h3 id="id_resultado"></h3>
+    <p id="id_res_pet"></p>
+</body>
+<script>
+    function calcular(){
+        let idade = Number(id_idade.value);
+        let qtd_pets = Number(id_qtd_pets.value);
+
+        if (idade >= 18){
+            id_resultado.innerHTML = "você é maior de idade, pode votar"
+        } else {
+            id_resultado.innerHTML = "você é menor de idade, não pode votar"
+        }
+        id_resultado.innerHTML += "fim"
+        if (qtd_pets > 3){
+            id_res_pet.innerHTML= "você tem muitos pets"
+        }
+
+    }
+</script>
+</html>

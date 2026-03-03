@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média Escolar de Paty</title>
+</head>
+<body>
+    <input type="text" id="id_n1" placeholder="digite nota 1">
+    <input type="text" id="id_n2" placeholder="digite nota 2">
+    <input type="text" id="id_n3" placeholder="digite nota 3">
+    <p id="mensagem"></p>
+    <button onclick="analisar()"> analisar desempenho</button>
+</body>
+<script>
+   function analisar() {
+    let n1 = Number(id_n1.value);
+        let n2 = Number(id_n2.value);
+        let n3 = Number(id_n3.value);
+        media = (n1 + n2+ n3)/3;
+        mensagem.innerHTML = `Sua média foi de ${media}`
+        if(media >9.4){
+            mensagem.innerHTML +="\n\n Parabéns, você é fora de série!"  
+        }
+   }
+</script>
+</html>

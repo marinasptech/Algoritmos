@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Basica</title>
+</head>
+<body>
+    digite o primeiro numero: <input type="text" id="id_num1"><br>
+    digite o segundo numero: <input type="text" id="id_num2"><br><br>
+
+    <button onclick="somar()">soma</button>
+    <button onclick="subtrair()">subtracao</button>
+    <button onclick="dividir()">divisao</button>
+    <button onclick="multiplicar()">multiplicacao</button>
+
+    <div id="resultado"></div>
+
+<script>
+    function pegarValores() {
+        let n1 = Number(id_num1.value);
+        let n2 = Number(id_num2.value);
+        return { n1, n2 };
+    }
+
+    function somar(){
+        let { n1, n2 } = pegarValores();
+        resultado.innerHTML = "A soma entre " + n1 + " e " + n2 + " é " + (n1 + n2);
+    }
+
+    function subtrair(){
+        let { n1, n2 } = pegarValores();
+        resultado.innerHTML = "A subtração entre " + n1 + " e " + n2 + " é " + (n1 - n2);
+    }
+
+    function dividir(){
+        let { n1, n2 } = pegarValores();
+        resultado.innerHTML = "A divisão entre " + n1 + " e " + n2 + " é " + (n1 / n2);
+    }
+
+    function multiplicar(){
+        let { n1, n2 } = pegarValores();
+        resultado.innerHTML = "A multiplicação entre " + n1 + " e " + n2 + " é " + (n1 * n2);
+    }
+</script>
+</body>
