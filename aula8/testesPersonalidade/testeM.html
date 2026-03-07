@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste das Meninas Superpoderosas</title>
+  <link rel="stylesheet" href="testeM.css">
+</head>
+<body>
+  <h1>Teste de Personalidade - Meninas Superpoderosas</h1>
+
+  <p>Digite valores de 1 a 10 para cada habilidade:</p>
+
+  Inteligência: <input type="number" id="ipt_inteligencia" min="1" max="10"><br><br>
+  Coragem: <input type="number" id="ipt_coragem" min="1" max="10"><br><br>
+  Sensibilidade: <input type="number" id="ipt_sensibilidade" min="1" max="10"><br><br>
+  Temperamento: <input type="number" id="ipt_temperamento" min="1" max="10"><br><br>
+
+  <button onclick="avaliarMeninas()">Enviar</button>
+
+  <div id="resultado"></div>
+  <a href="paginainicio.html" class="botao-voltar">Voltar para Página Inicial</a>
+
+
+  <script>
+    function avaliarMeninas() {
+      let inteligencia = Number(ipt_inteligencia.value);
+      let coragem = Number(ipt_coragem.value);
+      let sensibilidade = Number(ipt_sensibilidade.value);
+      let temperamento = Number(ipt_temperamento.value);
+
+      let resultado = document.getElementById("resultado");
+
+
+      if (inteligencia >= 8 && coragem >= 7 && temperamento <= 6 || inteligencia > sensibilidade && inteligencia > coragem) {
+        resultado.innerHTML = `❤️ Você é a Florzinha! <br> <img src ="florzinha.jpg">`;
+        document.body.style.backgroundColor = "pink";
+        resultado.style.color = "red";
+      } else if (sensibilidade >= 8 && temperamento <= 5 || sensibilidade > inteligencia && sensibilidade > coragem) {
+        resultado.innerHTML = `💙 Você é a Lindinha! <br> <img src ="lindinha.jpg">`;
+        document.body.style.backgroundColor = "lightblue";
+        resultado.style.color = "blue";
+      } else if (coragem >= 8 && temperamento >= 7) {
+        resultado.innerHTML = `💚 Você é a Docinho! <br> <img src= "docinho.jpg">`;
+        document.body.style.backgroundColor = "lightgreen";
+        resultado.style.color = "darkgreen";
+      } else {
+        resultado.innerHTML =`💚 Você é a Docinho! <br> <img src= "docinho.jpg">`;
+        document.body.style.backgroundColor = "lightgreen";
+        resultado.style.color = "darkgreen";
+      }
+    }
+  </script>
+</body>
+</html>

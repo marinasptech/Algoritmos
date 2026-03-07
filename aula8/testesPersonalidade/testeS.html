@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste do Scooby-Doo</title>
+  <link rel="stylesheet" href="testeS.css">
+</head>
+<body>
+  <h1>Teste de Personalidade - Scooby-Doo</h1>
+
+  <p>Digite valores de 1 a 10 para cada habilidade:</p>
+
+  Coragem: <input type="number" id="ipt_coragem" min="1" max="10"><br><br>
+  Inteligência: <input type="number" id="ipt_inteligencia" min="1" max="10"><br><br>
+  Curiosidade: <input type="number" id="ipt_curiosidade" min="1" max="10"><br><br>
+  Fome: <input type="number" id="ipt_fome" min="1" max="10"><br><br>
+
+  <button onclick="avaliarScooby()">Enviar</button>
+
+  <div id="resultado"></div>
+  <a href="paginainicio.html" class="botao-voltar">Voltar para Página Inicial</a>
+
+
+  <script>
+    function avaliarScooby() {
+      let coragem = Number(ipt_coragem.value);
+      let inteligencia = Number(ipt_inteligencia.value);
+      let curiosidade = Number(ipt_curiosidade.value);
+      let fome = Number(ipt_fome.value);
+
+      let resultado = document.getElementById("resultado");
+
+      if (inteligencia >= 8) {
+        resultado.innerHTML = `🧠 Você é a Velma! <br><img src="velma.gif">`;
+        document.body.style.backgroundColor = "#f5f5dc";
+        resultado.style.color = "brown";
+      } else if (coragem >= 7 && curiosidade >= 6) {
+        resultado.innerHTML = `😎 Você é o Fred! <br> <img src="fred.gif">`;
+        document.body.style.backgroundColor = "#e0ffff";
+        resultado.style.color = "navy";
+      } else if (curiosidade >= 8) {
+        resultado.innerHTML = `💜 Você é a Daphne! <br><img src= "daphne.gif">`;
+        document.body.style.backgroundColor = "#ffe4e1";
+        resultado.style.color = "purple";
+      } else if (fome >= 7 && coragem <= 4) {
+        resultado.innerHTML = `🍔 Você é o Salsicha ou Scooby! <br><img src="salsichaScooby.gif">`;
+        document.body.style.backgroundColor = "#fffacd";
+        resultado.style.color = "green";
+      } else {
+        resultado.innerHTML = `🍔 Você é o Salsicha ou Scooby! <br><img src="salsichaScooby.gif">`;
+        document.body.style.backgroundColor = "#fffacd";
+        resultado.style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>
