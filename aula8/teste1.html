@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testes de personalidades</title>
+</head>
+<body id="id_body">
+    </style>
+    <h3>Teste: Meninas superPoderosas</h3>
+
+    <h2> Digite o valor de sua inteligência</h2>
+    <input type="text" id="ipt_inteligencia" placeholder="entre 0 e 10"><br>
+    <h2> Digite o valor de sua coragem</h2>
+    <input type="text" id="ipt_coragem" placeholder="entre 0 e 10"><br>
+    <h2> Digite o valor de sua sensibilidade</h2>
+    <input type="text" id="ipt_sensibilidade" placeholder="entre 0 e 10"><br>
+    <h2> Digite o valor de seu temperamento</h2>
+    <input type="text" id="ipt_temperamento" placeholder="entre 0 e 10"><br>
+
+    <button onclick="teste1()"> Resultado</button>
+    <div id="id_resultadoFlorzinha"></div>
+     <div id="id_resultadoLindinha"></div>
+      <div id="id_resultadoDocinho"></div>
+
+</body>
+<script>
+    function teste1(){
+        let inteligencia = Number(ipt_inteligencia.value);
+        let coragem = Number(ipt_coragem.value);
+        let temperamento = Number(ipt_temperamento.value);
+        let sensibilidade = Number(ipt_sensibilidade.value);
+
+        if(inteligencia >= 8 && coragem >= 7 && temperamento <= 6){
+            if( inteligencia > sensibilidade && inteligencia > coragem){
+                id_resultadoFlorzinha.innerHTML = `Florzinha <br> <img src="https://media1.tenor.com/m/C87bn-H-1bcAAAAd/florzinha-blossom.gif">`
+                id_body.style.backgroundcolor = "#E97A96"
+
+                        }
+        } else if (sensibilidade >=8 && temperamento <= 5){
+            if(sensibilidade > inteligencia && sensibilidade > coragem){
+                id_resultadoLindinha.innerHTML = `Lindinha <br><img src="https://media.tenor.com/xfFXH2ZGOP8AAAAi/ppg-bubbles.gif"></p>`
+                id_body.style.backgroundcolor = "aquamarine"
+            }
+        } else if(coragem >= 8 && temperamento >= 7){
+            id_resultadoDocinho.innerHTML = `Docinho <br><img src="https://media1.tenor.com/m/0L2w-2XB9H8AAAAC/powerpuff-girls-the-powerpuff-girls.gif"></p>`
+            id_body.style.backgroundcolor = "#90EE90"
+
+        } else {
+            id_resultadoDocinho.innerHTML = `Docinho <br><img src="https://media1.tenor.com/m/0L2w-2XB9H8AAAAC/powerpuff-girls-the-powerpuff-girls.gif"></p>`
+            id_body.style.backgroundcolor = "#90EE90"
+
+
+        }
+    }
+</script>
+
+</html>
