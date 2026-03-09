@@ -30,19 +30,19 @@
 
       let resultado = document.getElementById("resultado");
 
-      if (inteligencia >= 8) {
+      if (inteligencia >= 8 && curiosidade > 8 || inteligencia > coragem) {
         resultado.innerHTML = `🧠 Você é a Velma! <br><img src="velma.gif">`;
         document.body.style.backgroundColor = "#f5f5dc";
         resultado.style.color = "brown";
-      } else if (coragem >= 7 && curiosidade >= 6) {
+      } else if (coragem >= 7 && curiosidade <= 5) {
         resultado.innerHTML = `😎 Você é o Fred! <br> <img src="fred.gif">`;
         document.body.style.backgroundColor = "#e0ffff";
         resultado.style.color = "navy";
-      } else if (curiosidade >= 8) {
+      } else if (curiosidade >= 8 && inteligencia >= 5 || curiosidade > coragem) {
         resultado.innerHTML = `💜 Você é a Daphne! <br><img src= "daphne.gif">`;
         document.body.style.backgroundColor = "#ffe4e1";
         resultado.style.color = "purple";
-      } else if (fome >= 7 && coragem <= 4) {
+      } else if (fome >= 7 && coragem <= 4 || fome > inteligencia) {
         resultado.innerHTML = `🍔 Você é o Salsicha ou Scooby! <br><img src="salsichaScooby.gif">`;
         document.body.style.backgroundColor = "#fffacd";
         resultado.style.color = "green";
