@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>digite seu curso de acordo com o padrao turma, curso e inicio</span>
+    <input type="text" id="idSala">
+   <button onclick="exibir()">clique</button>
+   <div id="resul"></div>
+</body>
+<!-- 1ccoa 20261-->
+<script>
+    function exibir(){
+        sala = idSala.value;
+        let curso = sala.substring(1,4);
+        let turma = sala.substring(4,5);
+        let inicio = sala.substring(6,10);
+        let sem = sala.substring(0,1);
+
+        resul.innerHTML = `você é do curso de ${curso}, da turma ${turma}, iniciou em ${inicio}, 
+        e você esta no ${sem} semestre `
+    }
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>digite seus palpites para a tabela do brasileirão</span><br>
+    <input type="text" id="idpalpite1" placeholder="primeiro lugar"><br>
+    <input type="text" id="idpalpite2" placeholder="segundo lugar"><br>
+    <input type="text" id="idpalpite3" placeholder="terceiro lugar"><br>
+    <input type="text" id="idpalpite4" placeholder="quarto lugar"><br>
+    <input type="text" id="idpalpite5" placeholder="quinto lugar"><br>
+    <button onclick="verificar()">verificar</button>
+    <div id="resul"></div>
+</body>
+<script>
+    function verificar(){
+        let times = ["corinthians", "são paulo", "vasco", "santos", "botafogo"]
+        let palpite1 = idpalpite1.value;
+        let palpite2 = idpalpite2.value;
+        let palpite3 = idpalpite3.value;
+        let palpite4 = idpalpite4.value;
+        let palpite5 = idpalpite5.value;
+        let listaV = [];
+        let listaF = [];
+        tamanhoTimes = times.length
+        
+
+        if(times[0] == palpite1.toLowerCase()){
+            listaV.push(palpite1);
+        } else{
+            listaF.push(palpite1);
+        }
+        if(times[1] == palpite2.toLowerCase()){
+            listaV.push(palpite2);
+        } else{
+            listaF.push(palpite2);
+        }
+        if(times[2] == palpite3.toLowerCase()){
+            listaV.push(palpite3);
+        } else{
+            listaF.push(palpite3);
+        }
+        if(times[3] == palpite4.toLowerCase()){
+            listaV.push(palpite4);
+        } else{
+            listaF.push(palpite4);
+        }
+        if(times[4] == palpite5.toLowerCase()){
+            listaV.push(palpite5);
+        } else{
+            listaF.push(palpite5);
+        }
+        tamanhoV = listaV.length;
+        tamanhoF = listaF.length;
+
+        resul.innerHTML = ` você teve ${tamanhoV} acertos,<br> 
+        teve ${tamanhoF} erros,<br>
+        os times que você acertou são: <br> ${listaV}, <br>
+        e os times que você errou são: <br> ${listaF}<br>
+        `
+        if (listaV > (tamanhoTimes/2)){
+            resul.innerHTML += "Você conhece bem essa competição!"
+        } else {
+             resul.innerHTML +=  "Você precisa acompanhar mais essa competição!"
+        }
+        
+        
+    }
+</script>
+</html>

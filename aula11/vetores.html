@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>digite uma fruta</span>
+    <input type="text" id="idFruta">
+    <button onclick="exibir()">exibir</button>
+    <button onclick="adicionar()">adicionar</button>
+    <div id="resul"></div>
+</body>
+<script>
+    let frutas = ["melancia", "melao", "morango"];
+    
+    function exibir(){
+        let tamanho = frutas.length;
+        let primFruta = frutas[0];
+        let ultFruta = frutas[tamanho - 1];
+
+        resul.innerHTML = `sua lista tem ${tamanho} frutas
+        a primeira fruta é ${primFruta} <br>
+        a ultima fruta é ${ultFruta} <br>
+        frutas ${frutas}`
+    }
+    function adicionar(){
+        let fruta= idFruta.value;
+        frutas.push(fruta);
+
+        resul.innerHTML += `<br> vetor atualizado ${frutas}`
+    }
+</script>
+</html>

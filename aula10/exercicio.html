@@ -49,7 +49,7 @@
             resultado.innerHTML = "digite uma mensagem valida";
         }
         if (mensagem.length < 10) {
-            resultado.innerHTML += "<br>Mensagem muito curta para análise.";
+            resultado.innerHTML = "<br>Mensagem muito curta para análise.";
         }
         if (mensagem.includes('bob')) {
             resultado.innerHTML += "<br>Atenção: usuário Bob mencionado na mensagem.";
