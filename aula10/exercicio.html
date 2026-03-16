@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Digite sua mensagem</span>
+    <input type="text" id="idMensagem">
+    <button onclick="analisar()">analisar mensagem</button>
+    <div id="resultado"></div>
+</body>
+<script>
+    function analisar() {
+        var sms = '';
+        var mensagem = idMensagem.value;
+
+        var tamanhoMensagem = mensagem.length;
+        sms += `Quantidade de Caracteres: ${tamanhoMensagem} <br>`;
+        var comecoMens = mensagem.startsWith('Eu')
+        sms += `Começa com 'Eu'? ${comecoMens} <br>`;
+        var terminoCom = mensagem.endsWith('.com')
+        sms += `Termina com '.com'? ${terminoCom} <br>`;
+        var terminoBr = mensagem.endsWith('.br')
+        sms += `Termina com '.br'? ${terminoBr} <br>`;
+        var primLetra = mensagem[0];
+        sms += `Primeira letra: ${primLetra} <br>`;
+        var quartaLetra = mensagem[3];
+        sms += `Quarta letra: ${quartaLetra} <br>`;
+        var ultPosicao = tamanhoMensagem - 1;
+        var ultLetra = mensagem[ultPosicao];
+        sms += `Ultima letra: ${ultLetra} <br>`;
+        var frase = mensagem.toLowerCase()
+        indexBob = frase.indexOf('bob');
+        sms += `Índice do "Bob": ${indexBob} <br>`
+        frase = mensagem.toLowerCase()
+        var mensBob = frase.includes('bob');
+        sms += `Frase possui bob? ${mensBob} <br>`;
+        var mensAlta = mensagem.toUpperCase();
+        sms += `Frase em caixa alta: <b>${mensAlta}<br>`
+        var mensBaixa = mensagem.toLowerCase();
+        sms += `Frase em caixa baixa: ${mensBaixa}<br>`;
+        var mensJunta = mensagem.replaceAll(' ', '');
+        sms += `Frase sem espaços: ${mensJunta}<br>`;
+        resultado.innerHTML = sms;
+
+        if (mensagem.replaceAll(' ', '').length == [0]) {
+            resultado.innerHTML = "digite uma mensagem valida";
+        }
+        if (mensagem.length < 10) {
+            resultado.innerHTML += "<br>Mensagem muito curta para análise.";
+        }
+        if (mensagem.includes('bob')) {
+            resultado.innerHTML += "<br>Atenção: usuário Bob mencionado na mensagem.";
+            resultado.innerHTML += "<br><b>Mensagem comum</b>"
+        }
+        if (mensagem.endsWith('.com') || mensagem.endsWith('.br')) {
+            resultado.innerHTML += "<br>A mensagem contém um possível link.";
+            resultado.innerHTML += "<br><b>Mensagem com link</b>"
+        }
+        if (mensagem.includes('promoção') || mensagem.includes('grátis')) {
+            resultado.innerHTML += "<br>Possível mensagem de spam detectada.";
+            resultado.innerHTML += "<br><b>Mensagem suspeita</b>"
+        }
+        if (mensagem.startsWith('Eu')) {
+            resultado.innerHTML += "<br>A mensagem parece estar escrita em primeira pessoa.";
+            resultado.innerHTML += "<br><b>Mensagem comum</b>"
+        }
+    }
+</script>
+</html>
