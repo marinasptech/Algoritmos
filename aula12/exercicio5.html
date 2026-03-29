@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+  width: 50px;
+  height: 50px; 
+}
+</style>
+<body>
+    <h5>Quantas Coca-Cola você já bebeu na vida?</h5>
+    <input type="number" id="idCoca">
+    <button onclick="analisar()">Ver a quantidade</button>
+    <div id="resul"></div>
+</body>
+<script>
+    function analisar() {
+        resul.innerHTML = "";
+        let qtd = idCoca.value;
+        for (let i = 0; i < qtd; i++) {
+            resul.innerHTML += `<img src="melhor.jpg"><br> `;
+        }
+    }
+</script>
+
+</html>

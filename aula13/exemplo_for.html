@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="idValor">
+    <button onclick="mostrar()">Ver cafes </button>
+    <div id="resul"></div>
+</body>
+<script>
+    function mostrar(){
+        let qtdCafes = Number(idValor.value);
+        final = "";
+        for (let i = 0; i < qtdCafes; i ++){
+            final += `Mostrando o café ${i + 1}, ☕ <br>`
+        }
+        resul.innerHTML += final;
+    }
+</script>
+</html>

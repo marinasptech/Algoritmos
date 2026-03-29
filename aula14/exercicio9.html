@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Pares no Intervalo</title>
+</head>
+
+<body>
+<span>digite um intervalo crescente de valores numéricos</span><br>
+<input type="number" id="Idinicio" placeholder="Inicio">
+
+<input type="number" id="Idfim" placeholder="Fim">
+
+<br><br>
+
+<button onclick="pares()">S2 Pares</button>
+
+<div id="resultado"></div>
+
+<script>
+    function pares(){
+
+var inicio = Number(Idinicio.value)
+var fim = Number(Idfim.value)
+
+var i = inicio
+
+resultado.innerHTML = ""
+
+while(i <= fim){
+
+if(i % 2 == 0){
+
+resultado.innerHTML += i + "<br>"
+
+}
+
+i++
+
+}
+
+}
+</script>
+
+</body>
+</html>

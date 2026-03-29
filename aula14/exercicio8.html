@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Papagaio</title>
+</head>
+
+<body>
+<span>digite um numero</span>
+<input type="number" id="Idnumero" placeholder="Número">
+
+<br><br>
+<span>digite uma frase</span>
+<input type="text" id="Idfrase" placeholder="Frase">
+
+<br><br>
+
+<button onclick="papagaio()">Papagaio</button>
+
+<script>
+    function papagaio(){
+
+var numero = Number(Idnumero.value)
+var frase = Idfrase.value
+
+var i = 1
+
+while(i <= numero){
+
+alert(`${i}: ${frase}`)
+
+i++
+
+}
+
+}
+</script>
+
+</body>
+</html>

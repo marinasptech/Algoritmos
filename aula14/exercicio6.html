@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Múltiplos de 5</title>
+</head>
+
+<body>
+<span> digite um numero entre 20 e 100</span>
+<input type="number" id="Idnumero" placeholder="Número entre 20 e 100">
+
+<br><br>
+
+<button onclick="multiplos()">Adoro múltiplos de 5</button>
+
+<div id="resultado"></div>
+
+<script>
+    function multiplos(){
+
+var numero = Number(Idnumero.value)
+
+var i = 0
+
+resultado.innerHTML = ""
+if (numero >=20 && numero <= 100){
+while(i <= numero){
+
+if(i % 5 == 0){
+
+resultado.innerHTML += i + "<br>"
+
+}
+
+i++
+
+}
+} else{
+    resultado.innerHTML = "numero invalido"
+}
+
+}
+</script>
+
+</body>
+</html>

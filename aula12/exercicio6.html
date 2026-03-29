@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     img {
+  width: 50px;
+  height: 50px; 
+}
+</style>
+<body>
+    <h5>Quantas xicaras você já bebeu na vida?</h5>
+    <input type="number" id="idXicara">
+    <button onclick="analisar()">Ver a quantidade</button>
+    <div id="resul"></div>
+    
+</body>
+<script> 
+    function analisar(){
+        resul.inerHTML = "";
+        let xicara = idXicara.value;
+
+        for (let i = 0; i < xicara; i ++){
+            if (xicara > 0){
+               resul.innerHTML += `<img src="leite.jpg"> <br>`;
+               resul.innerHTML += `<img src="cafe.jpg"> <br> <img src="cafe.jpg"> <br>`;
+        }
+    }
+}
+</script>
+</html>

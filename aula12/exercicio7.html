@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5>Quantos depositos você fez no banco?</h5>
+    <input type="number" id="idDeposito">
+    <h5>Quanto você depositou?</h5>
+    <input type="number" id="idValor">
+    <button onclick="contar()">Acompanhar grana</button>
+    <div id="resul"></div>
+</body>
+<script>
+    function contar() {
+        resul.innerHTML = "";
+        let qtd = Number(idDeposito.value);
+        let valor = Number(idValor.value);
+        let total = 0;
+
+        for (let i = 0; i < qtd; i++) {
+            total = total + valor;
+            resul.innerHTML += `${i + 1} Mês: R$ ${total} <br>`;
+        } 
+        resul.innerHTML += `Total guardado: R$ ${total}   `
+    }
+</script>
+</html>

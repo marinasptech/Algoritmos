@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="clicar()">contar</button>
+    <div id="resultado"></div>
+</body>
+<script>
+    let contador = 0;
+    function clicar(){
+        while(contador <15){
+            resultado.innerHTML += `<br>${contador +1}`;
+            contador ++;
+   }
+    }
+   
+</script>
+</html>

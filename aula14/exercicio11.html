@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Tabuada</title>
+
+<style>
+
+.vermelho{
+color:red;
+}
+
+.azul{
+color:blue;
+}
+
+</style>
+
+</head>
+
+<body>
+<span> Qual tabuada você deseja ver?</span><br>
+<select id="Idnumero">
+
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+
+</select>
+
+<input type="number" id="Idlimite">
+
+<br><br>
+
+<button onclick="tabuada()">Ver Tabuada</button>
+
+<div id="resultado"></div>
+
+<script>
+    function tabuada(){
+
+var numero = Number(Idnumero.value)
+var limite = Number(Idlimite.value)
+
+var i = 1
+
+resultado.innerHTML = ""
+
+while(i <= limite){
+
+if(i % 2 == 0){
+
+resultado.innerHTML += 
+"<span class='azul'>" + numero + " x " + i + 
+" = " + (numero * i) + "</span><br>"
+
+}else{
+
+resultado.innerHTML += 
+"<span class='vermelho'>" + numero + " x " + i + 
+" = " + (numero * i) + "</span><br>"
+
+}
+
+i++
+
+}
+
+}
+</script>
+
+</body>
+</html>

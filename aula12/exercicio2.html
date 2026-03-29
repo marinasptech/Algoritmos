@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5> quantas pessoas vão entrar no carro?</h5>
+    <input type="number" id="idPessoa">
+    <h5> quantos passageiros o carro suporta?</h5>
+    <input type="number" id="idSuporte"> !
+    <button onclick="exibir()">#partiuCarona</button>
+    <div id="resul"></div>
+</body>
+<script>
+    function exibir(){
+        let valor = idPessoa.value;
+        let suporte = idSuporte.value;
+
+        for (let i = 0; i <=valor; i++){
+            if(i == 1){
+               resul.innerHTML =`Entrou o ${i} passageiro (que é o motorista)<br>`;    
+            } else if(i <= suporte){
+                resul.innerHTML +=`Entrou o ${i} passageiro<br>`;
+            } else {
+                resul.innerHTML +=`O ${i} passageiro terá que esperar!<br> `;
+            }
+        }
+    }
+</script>
+</html>

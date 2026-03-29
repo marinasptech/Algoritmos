@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4> quantas batalhas serão?</h4>
+    <input type="text" id="idBatalha">
+    <h4> quantos marinheiros terão em cada batalha?</h4>
+    <input type="text" id="idMarinheiro">
+    <h4> quantas carnes estão disponiveis?</h4>
+    <input type="text" id="idCarne">
+
+    <button onclick="lutar()">iniciar batalhas</button>
+    <div id="resultado"></div>
+</body>
+<script>
+    let energia = 100;
+
+    function lutar() {
+        let bat = Number(idBatalha.value);
+        let mar = Number(idMarinheiro.value);
+        let carne = Number(idCarne.value);
+        let cMar = 0;
+        resul = `
+----------------------------------------
+<br>Quantidade de batalhas: ${bat}
+<br>Quantidade de marinheiros: ${mar}
+<br>Quantidade de carnes: ${carne}
+<br>----------------------------------------`
+        count = 0;
+        for (i = 0; i < bat; i++) {
+            cMar = 0;
+            if (i > 0) {
+                energia -= 10;
+            }
+            if (count == 1) {
+                resul += `<br>🛞 Não é possível iniciar a ${i} batalha, acabou a carne e a energia.`
+            } else {
+                resul += `<br> ${i + 1} Batalha Iniciada: <br>Quantidade de Energia: ${energia}`
+                for (m = 0; m < mar; m++) {
+                    if (energia < 5) {
+                        if (carne > 0) {
+                            resul += "<br>🥩 Energia recarregada com carne";
+                            resul += `<br>🗡️ Derrotando ${m + 1} marinheiro`;
+                            energia = 100;
+                            carne--;
+                            cMar++;
+                            energia -= 5;
+                        } else {
+                            resul += `<br>🕱 Energia esgotada, não há mais carne disponível, o ${m + 1} marinheiro continua vivo.`;
+                            count = 1;
+                        }
+                    } else {
+                        resul += `<br>🗡️ Derrotando ${m + 1} marinheiro`;
+                        energia -= 5;
+                        cMar++;
+                    }
+                }
+                if (count == 0) {
+                    resul += `<br>Resultado: Luffy saiu vitorioso, derrotando ${cMar} marinheiro(s) <br>Energia Restante: ${energia} <br>Carnes Restantes: ${carne}`
+                } else {
+                    resul += `<br>Resultado: Luffy foi derrotado, derrotando ${cMar} marinheiro(s) <br>Energia Restante: ${energia} <br>Carnes Restantes: ${carne}`
+                }
+            }
+
+        }
+        resultado.innerHTML = resul;
+    }
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Viva o 7</title>
+</head>
+
+<body>
+<span> digite um numero entre 0 e 200</span>
+<input type="number" id="Idnumero">
+
+<br><br>
+
+<button onclick="viva7()">Viva o 7</button>
+
+<div id="resultado"></div>
+
+<script>
+    function viva7(){
+
+var numero = Number(Idnumero.value)
+
+var i = 0
+
+resultado.innerHTML = ""
+if (numero >=0 && numero <=200){
+while(i <= numero){
+if(i % 7 == 0){
+
+resultado.innerHTML += i + "<br>"
+
+}
+
+i++
+
+}
+
+} else{
+    resultado.innerHTML = " numero invalido"
+}
+}
+
+</script>
+
+</body>
+</html>

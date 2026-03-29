@@ -6,18 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    <span>digite seus palpites para a tabela do brasileirão</span><br>
-    <input type="text" id="idpalpite1" placeholder="primeiro lugar"><br>
-    <input type="text" id="idpalpite2" placeholder="segundo lugar"><br>
+    <h2>digite seus palpites para a tabela do brasileirão</h2><br>
+    <input type="text" id="idpalpite1" placeholder="primeiro lugar">
+    <input type="text" id="idpalpite2" placeholder="segundo lugar">
     <input type="text" id="idpalpite3" placeholder="terceiro lugar"><br>
-    <input type="text" id="idpalpite4" placeholder="quarto lugar"><br>
+    <input type="text" id="idpalpite4" placeholder="quarto lugar">
     <input type="text" id="idpalpite5" placeholder="quinto lugar"><br>
     <button onclick="verificar()">verificar</button>
     <div id="resul"></div>
+
+    <h2> Meus Campeões</h2>
+    <span>digite seus campeões (ordem crescente) para a tabela do brasileirão</span><br>
+    <input type="text" id="idCamp" placeholder="um por vez"><br>
+    <button onclick="adicionar()">adicionar</button>
+    <div id="resultado"></div>
+
+     <h2>Busca</h2>
+    <span>digite o time de busca</span><br>
+    <input type="text" id="idBusca" placeholder="um por vez"><br>
+    <button onclick="pesquisar()">pesquisar</button>
+    <div id="resulBusca"></div>
+
+
 </body>
 <script>
+    let listaCamp = [];
+    let times = ["corinthians", "são paulo", "vasco", "santos", "botafogo"]
     function verificar(){
-        let times = ["corinthians", "são paulo", "vasco", "santos", "botafogo"]
         let palpite1 = idpalpite1.value;
         let palpite2 = idpalpite2.value;
         let palpite3 = idpalpite3.value;
@@ -56,18 +71,60 @@
         tamanhoV = listaV.length;
         tamanhoF = listaF.length;
 
+
         resul.innerHTML = ` você teve ${tamanhoV} acertos,<br> 
         teve ${tamanhoF} erros,<br>
         os times que você acertou são: <br> ${listaV}, <br>
-        e os times que você errou são: <br> ${listaF}<br>
+        e os times que você errou são: <br> ${listaF}<br><br>
+        o campeão é <b>${times[0].toUpperCase()} 🥇<br>
+        ⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢻⣧⣀⣼⠇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄<br>
+        ⠄⣠⣾⣿⣷⡀⠄⠄⠄⠄⠄⣤⣶⣿⣿⣿⣦⣄⠄⠄⠄⠄⠄⣠⣾⣿⣷⣄⠄<br>
+        ⠺⣿⣿⣿⣿⣿⣦⡀⠄⠄⠄⠿⢿⣿⣿⣿⡿⠟⠄⠄⠄⢀⣼⣾⣿⣿⣿⡿⠇<br>
+        ⠄⠈⠻⢿⣿⣿⢛⡇⠄⠄⢀⣠⡤⣖⣗⣷⠤⣄⣀⠄⠄⣸⠛⣿⣿⡿⠋⠄⠄<br>
+        ⠄⠄⠄⠄⠙⠛⠛⢗⡴⣛⠭⣖⢂⠏⡟⢹⠖⢖⠭⡓⢤⡛⠛⠛⠉⠄⠄⠄⠄<br>
+        ⠄⠄⠄⠄⠄⠄⡴⣫⢞⢈⡳⠛⠈⠉⠉⠉⠙⠺⢦⡿⠢⡙⣆⠄⠄⠄⠄⠄⠄<br>
+        ⠄⠄⠄⠄⠄⡾⣱⠉⡲⣏⢀⡠⠴⢶⣟⣓⡤⠔⣚⠑⣖⢛⡌⣧⠄⠄⠄⠄⠄<br>
+        ⠄⠄⠄⠄⢸⢧⣇⢬⠃⠐⢵⣏⣛⠸⢷⣶⣚⡭⠾⠄⠘⣑⣺⢸⡄⠄⠄⠄⠄<br>
+        ⠄⠄⠄⠨⣯⣿⣙⣨⠄⠄⠣⠩⢖⣫⠭⠭⡵⣚⣭⢅⠄⡷⢶⣿⣽⠄⠄⠄⠄<br>
+        ⠄⠄⠄⠈⠹⡝⣿⡿⡀⠄⠈⣋⡭⢖⣫⡭⣞⡽⢖⣫⢤⣉⣹⢹⠏⠄⠄⠄⠄<br>
+        ⠄⣦⡀⠄⠄⢳⡱⣥⡶⢄⠄⠸⡚⠁⢰⣛⡭⠖⠉⡠⠳⣭⢇⡟⠄⠄⢀⣴⠄<br>
+        ⢰⣿⢷⣤⡀⠈⠳⣝⢤⣾⠶⣤⣕⣀⠄⣀⣀⣤⠚⣷⡶⣣⠞⠄⢀⣴⢿⣿⠄<br>
+        ⠄⣿⢞⣷⡀⠄⢀⠜⠲⣍⡲⠿⣢⣰⣩⣠⡃⠿⣛⡡⠞⠥⡀⠄⣠⣟⡶⡿⠄<br>
+        ⠄⠄⠈⢫⡻⣶⡟⠁⠄⠄⠉⠑⠒⣗⣟⡗⠒⠛⠉⠄⠄⠄⢨⣶⣯⠞⠄⠁⠄<br>
+        ⠄⠄⠄⡠⠻⢮⡻⣦⣄⡀⠄⠄⣀⣥⣥⣥⡀⠄⠄⣀⣠⡶⣿⡿⠛⢆⠄⠄⠄<br>
+        ⠄⠄⠾⠉⠄⠄⠙⠿⣽⣟⣿⣿⡿⠟⢹⣿⣿⣿⣟⣿⣽⠞⠋⠄⠄⠄⠑⠄⠄<br>
+
+<b><br>
         `
-        if (listaV > (tamanhoTimes/2)){
+        if (tamanhoV >= (tamanhoTimes/2)){
             resul.innerHTML += "Você conhece bem essa competição!"
         } else {
              resul.innerHTML +=  "Você precisa acompanhar mais essa competição!"
         }
         
         
+    }
+    function adicionar(){
+        
+        campUsu = idCamp.value;
+
+        listaCamp.push(campUsu);
+        resultado.innerHTML = ` ${listaCamp} `
+    }
+
+    function pesquisar(){
+        let busca = idBusca.value;
+
+        if (times.includes(busca) && listaCamp.includes(busca)){
+            resulBusca.innerHTML = "time está em ambas as listas"
+        } else if (times.includes(busca)){
+            resulBusca.innerHTML = "time está na lista do sistema"
+        } else if (listaCamp.includes(busca)){
+            resulBusca.innerHTML = "time está na lista do usuario"
+        } else {
+            resulBusca.innerHTML = "time nao está em nenhuma lista"
+        }
+
     }
 </script>
 </html>
