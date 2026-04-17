@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+<input id="ipt_palavra">
+<button onclick="validar()">Validar Palíndromo</button>
+
+<br><br>
+
+<div id="div_msg"></div>
+
+</body>
+
+<script>
+
+function validar(){
+
+    let texto = ipt_palavra.value.toLowerCase();
+    let semEspaco = "";
+
+    for(let i=0;i<texto.length;i++){
+        if(texto[i] != " "){
+            semEspaco += texto[i];
+        }
+    }
+
+    let invertido = "";
+
+    for(let i=semEspaco.length-1;i>=0;i--){
+        invertido += semEspaco[i];
+    }
+
+    if(semEspaco == invertido){
+        div_msg.innerHTML = "É palíndromo <br>";
+    }else{
+        div_msg.innerHTML = "Não é palíndromo <br>";
+    }
+
+    div_msg.innerHTML += "Invertido: " + invertido;
+
+}
+
+</script>
+
+</html>

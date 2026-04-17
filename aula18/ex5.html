@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 5</title>
+</head>
+<body>
+    <button onclick="jogar()">Jogar</button>
+
+<div id="imagem"></div>
+<div id="resultado"></div>
+
+<div id="placar1">Jogador 1: 0 vitória(s)</div>
+<div id="placar2">Jogador 2: 0 vitória(s)</div>
+</body>
+<script>
+
+let j1 = 0;
+let j2 = 0;
+
+function jogar(){
+
+let jogador1 = Math.floor(Math.random()*3);
+let jogador2 = Math.floor(Math.random()*3);
+
+let imagens = [
+"pedra.jpg",
+"papel.png",
+"tesoura.jpg"
+];
+
+imagem.innerHTML =
+"<img src='"+imagens[jogador1]+"' height='200px'>" +
+"<img src='"+imagens[jogador2]+"' height='200px'>";
+
+if(jogador1 == jogador2){
+resultado.innerHTML = "Empate!";
+}
+
+else if(
+(jogador1 == 0 && jogador2 == 2) ||
+(jogador1 == 1 && jogador2 == 0) ||
+(jogador1 == 2 && jogador2 == 1)
+){
+j1++
+resultado.innerHTML = "Jogador 1 venceu!";
+}
+
+else{
+j2++
+resultado.innerHTML = "Jogador 2 venceu!";
+}
+
+placar1.innerHTML = "Jogador 1: " + j1 + " vitória(s)";
+placar2.innerHTML = "Jogador 2: " + j2 + " vitória(s)";
+
+}
+
+</script>
+</html>

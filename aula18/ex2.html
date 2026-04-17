@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 2</title>
+</head>
+
+<body>
+    <button onclick="sortear()">Sortear Time</button>
+
+    <div id="imagem"></div>
+
+</body>
+<script>
+
+    function sortear() {
+
+        let numero = Math.floor(Math.random() * 4);
+
+        if (numero == 0) {
+            imagem.innerHTML = '<img src="corinthians.png" height="150px">';
+        }
+
+        if (numero == 1) {
+            imagem.innerHTML = '<img src="palmeiras.jpg" height="150px">';
+        }
+
+        if (numero == 2) {
+            imagem.innerHTML = '<img src="saopaulo.png" height="150px">';
+        }
+
+        if (numero == 3) {
+            imagem.innerHTML = '<img src="santos.png" height="150px">';
+        }
+
+    }
+
+</script>
+
+</html>

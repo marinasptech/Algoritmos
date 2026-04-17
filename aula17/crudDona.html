@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud</title>
+</head>
+<body>
+    <h3>CRUD da Dona Matilde</h3>
+
+    Cadastrar antiguidades: <br><input type="text" id="ipt_antiguidade">
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    Verificar estoque:<br>
+    <button onclick="verificar()"> Verificar</button>
+    <div id="resul"></div>
+</body>
+<script>
+    let listaAntg = [];
+
+function cadastrar(){
+    let antiguidade = ipt_antiguidade.value;
+    listaAntg.push(antiguidade);
+}
+function verificar(){
+    if(listaAntg.length < 3){
+        resul.innerHTML = `A loja está quase vazia, precisamos de mais peças raras!`
+    } else if(listaAntg.length >= 3 && listaAntg.length <=7){
+        resul.innerHTML = `Temos algumas peças, mas ainda podemos melhorar o acervo`
+    } else if(listaAntg.length >= 8 && listAntg.length <=10){
+        resul.innerHTML = `Ótimo! A loja já está bem interessante para os clientes`
+    } else if(listaAntg.length > 10){
+        resul.innerHTML = `Excelente! Nossa loja está cheia de relíquias incríveis!`
+    }
+}
+</script>
+</html>

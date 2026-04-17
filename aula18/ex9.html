@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 9</title>
+</head>
+<body>
+    <button onclick="nota()">Gerar nota</button>
+<button onclick="freq()">Gerar frequência</button>
+<button onclick="ver()">Ver Aprovação</button>
+
+<div id="notaAluno"></div>
+<div id="freqAluno"></div>
+<div id="resultado"></div>
+</body>
+<script>
+
+let numero = 0;
+let frequencia = 0;
+
+function nota(){
+numero = (Math.random()*7 + 3).toFixed(1);
+notaAluno.innerHTML = numero;
+}
+
+function freq(){
+frequencia = (Math.random()*50 + 50).toFixed(1);
+freqAluno.innerHTML = frequencia;
+}
+
+function ver(){
+
+let situacao;
+
+if(numero >=6 && frequencia >=75){
+situacao = "Aprovado";
+}else{
+situacao = "Reprovado";
+}
+
+resultado.innerHTML =
+"Com nota " + numero +
+" e frequência " + frequencia +
+", o aluno está " + situacao;
+
+}
+
+</script>
+</html>

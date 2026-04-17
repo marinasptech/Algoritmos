@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Gourmet</title>
+</head>
+
+<body>
+    <h2>Doceria Gourmet - Dori Valdossin</h2>
+
+    <h3>Quantidade</h3>
+
+    Macarons:
+    <input type="number" id="idQtdMacaron"><br><br>
+
+    Brigadeiros:
+    <input type="number" id="idQtdBrigadeiro"><br><br>
+
+    Cupcakes:
+    <input type="number" id="idQtdCupcake"><br><br>
+
+    Cheesecakes:
+    <input type="number" id="idQtdCheesecake"><br><br>
+
+    <h3>Preço Unitário</h3>
+
+    Macarons:
+    <input type="number" id="idPrecoMacaron"><br><br>
+
+    Brigadeiros:
+    <input type="number" id="idPrecoBrigadeiro"><br><br>
+
+    Cupcakes:
+    <input type="number" id="idPrecoCupcake"><br><br>
+
+    Cheesecakes:
+    <input type="number" id="idPrecoCheesecake"><br><br>
+
+
+    <button onclick="verificar()">Verificar Vendas</button>
+
+    <br><br>
+
+    <div id="resultado"></div>
+
+</body>
+
+<script>
+
+    function verificar() {
+
+        resultado.innerHTML = ""
+
+        let qtdMacaron = idQtdMacaron.value;
+        let qtdBrigadeiro = idQtdBrigadeiro.value;
+        let qtdCupcake = idQtdCupcake.value;
+        let qtdCheesecake = idQtdCheesecake.value;
+        let precoMacaron = idPrecoMacaron.value;
+        let precoBrigadeiro = idPrecoBrigadeiro.value;
+        let precoCupcake = idPrecoCupcake.value;
+        let precoCheesecake = idPrecoCheesecake.value;
+
+        if (
+            qtdMacaron < 0
+            || qtdBrigadeiro < 0
+            || qtdCupcake < 0
+            || qtdCheesecake < 0
+            || precoMacaron < 0
+            || precoBrigadeiro < 0
+            || precoCupcake < 0
+            || precoCheesecake < 0) {
+            resultado.innerHTML = "Erro: Valores não podem ser negativos"
+        } else{
+
+        let venda = 1
+        let total = 0
+
+        // macaron
+        for (let i = 0; i < qtdMacaron; i++) {
+            resultado.innerHTML += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSZbDA0WoPF2Gi4UXLwL4yz5zShZTb80SItg&s" width="60px"> - R$${precoMacaron} <br>`
+            //total += precoMacaron
+            venda++
+
+        }
+        // brigadeiro
+        for (let i = 0; i < qtdBrigadeiro; i++) {
+
+            resultado.innerHTML += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQqjhA1MZ3gaDF0tZ3v1p6KJjop0Q7sn2jDw&s" width="60px"> - R$${precoBrigadeiro} <br>`
+            //total += precoBrigadeiro
+            venda++
+
+        }
+        // cupcake
+        for (let i = 0; i < qtdCupcake; i++) {
+
+            resultado.innerHTML += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEWRkq77UlhJ3Akp2pHcv1OQhr_XX1A9HvoQ&s" width="60px"> - R$${precoCupcake} <br>`
+            //total += precoCupcake
+            venda++
+
+        }
+        // cheesecake
+        for (let i = 0; i < qtdCheesecake; i++) {
+
+            resultado.innerHTML += `Venda ${venda} - <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDFa6VtS5kMvQCfDU6R3pINS6k-U7us07L-Q&s" width="60px"> - R$${precoCheesecake} <br>`
+            //total += precoCheesecake
+            venda++
+
+        }
+        total = ((precoBrigadeiro*qtdBrigadeiro) + (precoCheesecake*qtdCheesecake) + (precoCupcake*qtdCupcake) + (precoMacaron*qtdMacaron))
+        resultado.innerHTML += `<br>Com a quantidade de ${qtdMacaron} Macarons, ${qtdBrigadeiro} Brigadeiros, ${qtdCupcake} Cupcakes e ${qtdCheesecake} Cheesecakes, a venda totalizará R$${total.toFixed(2)}`
+
+    }
+    }
+</script>
+</html>

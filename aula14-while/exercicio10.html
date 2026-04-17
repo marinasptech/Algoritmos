@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Corrida</title>
+</head>
+
+<body>
+    <span>quantas voltas um carro dará numa corrida </span>
+    <input type="number" id="Idvoltas">
+
+    <br><br>
+
+    <button onclick="corrida()">Iniciar Corrida</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function corrida() {
+            var voltas = Number(Idvoltas.value)
+
+            var i = 1
+
+            resultado.innerHTML = ""
+
+            while (i <= voltas) {
+
+                resultado.innerHTML +=
+                    `Carro dando a ${i}ª volta <br>`
+
+                i++
+
+            }
+
+            resultado.innerHTML +=
+                "<br>Corrida Finalizada!"
+
+        }
+    </script>
+
+</body>
+
+</html>

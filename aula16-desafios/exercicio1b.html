@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Duplicados Desafio</title>
+</head>
+
+<body>
+
+Adicionar elemento: <input id="ipt_valor">
+<button onclick="adicionar()">Adicionar</button>
+
+<br><br>
+
+<button onclick="exibirDuplicados()">Exibir Duplicados</button>
+<button onclick="removerDuplicados()">Remover Duplicatas</button>
+
+<br><br>
+
+<div id="div_msg"></div>
+
+</body>
+
+<script>
+
+let lista = [];
+
+function adicionar(){
+    lista.push(ipt_valor.value);
+    mostrar();
+}
+
+function exibirDuplicados(){
+
+    let duplicados = [];
+
+    for(let i=0;i<lista.length;i++){
+
+        let contador = 0;
+
+        for(let j=0;j<lista.length;j++){
+            if(lista[i] == lista[j]){
+                contador++;
+            }
+        }
+
+        if(contador > 1){
+
+            let existe = false;
+
+            for(let k=0;k<duplicados.length;k++){
+                if(duplicados[k] == lista[i]){
+                    existe = true;
+                }
+            }
+
+            if(!existe){
+                duplicados.push(lista[i]);
+            }
+        }
+    }
+
+    div_msg.innerHTML = "Duplicados:<br>";
+
+    for(let i=0;i<duplicados.length;i++){
+        div_msg.innerHTML += duplicados[i] + "<br>";
+    }
+}
+
+function removerDuplicados(){
+
+    let novaLista = [];
+
+    for(let i=0;i<lista.length;i++){
+
+        let existe = false;
+
+        for(let j=0;j<novaLista.length;j++){
+            if(lista[i] == novaLista[j]){
+                existe = true;
+            }
+        }
+
+        if(!existe){
+            novaLista.push(lista[i]);
+        }
+    }
+
+    lista = novaLista;
+    mostrar();
+}
+
+function mostrar(){
+    div_msg.innerHTML = "";
+    for(let i=0;i<lista.length;i++){
+        div_msg.innerHTML += lista[i] + "<br>";
+    }
+}
+
+</script>
+
+</html>

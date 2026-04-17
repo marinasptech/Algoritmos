@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="sortear()">Quero um número cabalístico!</button>
+
+    <div id="numero"></div>
+    <div id="frase"></div>
+</body>
+<script>
+
+    function sortear() {
+
+        let numeroSorteado = Math.floor(Math.random() * 15) + 1;
+
+        numero.innerHTML = numeroSorteado;
+
+        if (
+            numeroSorteado == 3 ||
+            numeroSorteado == 4 ||
+            numeroSorteado == 7 ||
+            numeroSorteado == 10 ||
+            numeroSorteado == 12
+        ) {
+            frase.innerHTML = "Eu S2 números cabalísticos!";
+        } else {
+            frase.innerHTML = "Ah, me dá um número bom na próxima!";
+        }
+
+    }
+
+</script>
+
+</html>

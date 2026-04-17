@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+<input id="ipt_texto">
+<button onclick="inverter()">Inverter</button>
+
+<br><br>
+
+<div id="div_msg"></div>
+
+</body>
+
+<script>
+
+function inverter(){
+
+    let texto = ipt_texto.value;
+    let invertido = texto.split("").reverse().join("");
+
+    div_msg.innerHTML = invertido;
+}
+
+</script>
+
+</html>
