@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega 1 - AC03</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 1rem; background: #f5f5f5; }
+        h1 { text-align: center; }
+        .card { background: white; border-radius: 8px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+        label { display: block; margin-top: 0.6rem; font-weight: bold; font-size: 0.9rem; }
+        input { width: 100%; padding: 0.5rem; margin-top: 0.2rem; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { margin-top: 0.8rem; padding: 0.5rem 1.2rem; border: none; border-radius: 5px; cursor: pointer; background: #4a90e2; color: white; font-size: 0.95rem; }
+        button.danger { background: #e25555; }
+        button.neutral { background: #888; }
+        .msg { margin-top: 0.6rem; padding: 0.5rem 0.8rem; border-radius: 5px; font-size: 0.9rem; }
+        .msg.error   { background: #fde8e8; color: #b00; border-left: 4px solid #b00; }
+        .msg.success { background: #e6f9ec; color: #1a7a3c; border-left: 4px solid #1a7a3c; }
+        .msg.info    { background: #e8f0fe; color: #1a4cb0; border-left: 4px solid #1a4cb0; }
+        .music-item { background: #f9f9f9; border: 1px solid #ddd; border-radius: 6px; padding: 0.7rem 1rem; margin-top: 0.6rem; }
+    </style>
+</head>
+
+<body>
+
+    <h1>AC03 - Gerenciador de Musicas</h1>
+
+    <!-- ADICIONAR -->
+    <div class="card">
+        <h2>Adicionar Musica</h2>
+        <label>Titulo</label>
+        <input type="text" id="ipt_nome" placeholder="Nome da musica">
+        <label>Banda</label>
+        <input type="text" id="ipt_banda" placeholder="Nome da banda">
+        <label>Duracao (min)</label>
+        <input type="text" id="ipt_duracao" placeholder="Ex: 3.5">
+        <label>Ano de Lancamento</label>
+        <input type="text" id="ipt_lancamento" placeholder="Ex: 2023">
+        <label>Avaliacoes <small>(numeros 1-5, separados por virgula)</small></label>
+        <input type="text" id="ipt_avaliacoes" placeholder="Ex: 4,5,4.5">
+        <label>Integrantes <small>(separados por virgula)</small></label>
+        <input type="text" id="ipt_integrante" placeholder="Ex: Jay, Heeseung">
+        <button onclick="adicionarMusica()">+ Adicionar Musica</button>
+        <div id="msg_adicionar" class="msg"></div>
+    </div>
+
+    <!-- LISTAR -->
+    <div class="card">
+        <h2>Listar Musicas</h2>
+        <button class="neutral" onclick="listar()">Mostrar Todas as Musicas</button>
+        <div id="lista-output"></div>
+    </div>
+
+    <!-- REMOVER -->
+    <div class="card">
+        <h2>Remover Musica</h2>
+        <label>Titulo da Musica</label>
+        <input type="text" id="ipt_titulor" placeholder="Titulo para remover">
+        <button class="danger" onclick="removerMusica()">Remover</button>
+        <div id="msg_remover" class="msg"></div>
+    </div>
+
+    <!-- ATUALIZAR ANO -->
+    <div class="card">
+        <h2>Atualizar Ano de Lancamento</h2>
+        <label>Titulo da Musica</label>
+        <input type="text" id="ipt_titulo_atualizar" placeholder="Titulo da musica">
+        <label>Novo Ano</label>
+        <input type="number" id="ipt_ano_novo" placeholder="Ex: 2024">
+        <button onclick="atualizarAnoLancamento()">Atualizar Ano</button>
+        <div id="msg_atualizar" class="msg"></div>
+    </div>
+
+    <!-- MEDIA -->
+    <div class="card">
+        <h2>Media de Avaliacoes</h2>
+        <label>Titulo da Musica</label>
+        <input type="text" id="ipt_media" placeholder="Titulo da musica">
+        <button onclick="mediaAvaliacoes()">Calcular Media</button>
+        <div id="msg_media" class="msg"></div>
+    </div>
+
+    <!-- BUSCAR POR INTEGRANTE -->
+    <div class="card">
+        <h2>Buscar Banda por Integrante</h2>
+        <label>Nome do Integrante</label>
+        <input type="text" id="ipt_integrantes" placeholder="Nome do integrante">
+        <button onclick="buscarBandaPorIntegrante()">Buscar</button>
+        <div id="msg_buscar" class="msg"></div>
+    </div>
+    <script src="listaMusica.js"></script>
+
+    <script>
+
+        function calcMedia(avaliacoes) {
+            let soma = 0;
+            for (let i = 0; i < avaliacoes.length; i++) {
+                soma = soma + Number(avaliacoes[i]);
+            }
+            return soma / avaliacoes.length;
+        }
+
+        function adicionarMusica() {
+            let nome       = ipt_nome.value.trim();
+            let banda      = ipt_banda.value.trim();
+            let duracao    = ipt_duracao.value.trim();
+            let lancamento = ipt_lancamento.value.trim();
+            let avalStr    = ipt_avaliacoes.value.trim();
+            let integStr   = ipt_integrante.value.trim();
+
+            // 1. Todos os campos obrigatorios preenchidos
+            if (nome === "" || banda === "" || duracao === "" || lancamento === "" || avalStr === "" || integStr === "") {
+                msg_adicionar.innerHTML = "Preencha todos os campos para adicionar a musica.";
+                return;
+            }
+
+            let avaliacoes  = avalStr.split(",");
+            let integrantes = integStr.split(",");
+
+            // 2. Ao menos uma avaliacao e um integrante
+            if (avaliacoes.length === 0 || integrantes.length === 0) {
+                msg_adicionar.innerHTML = "Informe ao menos uma avaliacao e um integrante."; 
+                return; 
+            }
+
+            // 3. Avaliacoes devem ser numeros entre 1 e 5
+            for (let i = 0; i < avaliacoes.length; i++) {
+                let n = Number(avaliacoes[i]);
+                if (isNaN(n) || n < 1 || n > 5) {
+                    msg_adicionar.innerHTML = "Todas as avaliacoes devem ser numeros entre 1 e 5.";
+                    return; 
+                }
+            }
+
+            // 4. Titulo nao pode ser duplicado
+            for (let i = 0; i < musicaListadas.length; i++) {
+                if (musicaListadas[i].titulo.toLowerCase() === nome.toLowerCase()) {
+                    msg_adicionar.innerHTML = "Ja existe uma musica com este titulo.";
+                    return; 
+                }
+            }
+
+            let novaMusica = {
+                titulo: nome,
+                banda: banda,
+                duracao: Number(duracao),
+                anoLancamento: Number(lancamento),
+                avaliacoes: avaliacoes,
+                integrantes: integrantes
+            };
+            musicaListadas.push(novaMusica);
+
+            msg_adicionar.innerHTML = `${nome} adicionada com sucesso!`;
+
+            // Limpa campos
+            ipt_nome.value        = "";
+            ipt_banda.value       = "";
+            ipt_duracao.value     = "";
+            ipt_lancamento.value  = "";
+            ipt_avaliacoes.value  = "";
+            ipt_integrante.value  = "";
+        }
+
+        function listar() {
+            let container = document.getElementById("lista-output");
+
+            if (musicaListadas.length === 0) {
+                container.innerHTML = "<p>Nenhuma musica cadastrada.</p>";
+                return;
+            }
+
+            let html = "";
+            for (let i = 0; i < musicaListadas.length; i++) {
+                let musica = musicaListadas[i];
+                html += `
+                    <div class="music-item">
+                        <strong>${musica.titulo}</strong><br>
+                        Banda: ${musica.banda}<br>
+                        Duração: ${musica.duracao} min<br>
+                        Ano de lançamento: ${musica.anoLancamento}<br>
+                        Avaliações: ${musica.avaliacoes.join(", ")}<br>
+                        Integrantes: ${musica.integrantes.join(", ")}
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function removerMusica() {
+            let titulo = ipt_titulor.value.trim();
+
+            // 1. Titulo informado
+            if (titulo === "") {
+                msg_remover.innerHTML = "Informe o titulo para remover.";
+                return; 
+            }
+
+            // 2. Procura a musica
+            let indice = -1;
+            for (let i = 0; i < musicaListadas.length; i++) {
+                if (musicaListadas[i].titulo.toLowerCase() === titulo.toLowerCase()) {
+                    indice = i;
+                    break;
+                }
+            }
+
+            if (indice === -1) {
+                msg_remover.innerHTML = "Musica nao encontrada para remocao.";
+                return;
+            }
+
+            musicaListadas.splice(indice, 1);
+            msg_remover.innerHTML = `${titulo} removida com sucesso`;
+            ipt_titulor.value = "";
+        }
+
+        function atualizarAnoLancamento() {
+            let titulo = ipt_titulo_atualizar.value.trim();
+            let anoStr = ipt_ano_novo.value.trim();
+
+            // 1. Titulo e ano informados
+            if (titulo === "" || anoStr === "") {
+                msg_atualizar.innerHTML = "Informe o titulo e o novo ano.";
+                return;
+            }
+
+            // 2. Procura a musica
+            let musica = null;
+            for (let i = 0; i < musicaListadas.length; i++) {
+                if (musicaListadas[i].titulo.toLowerCase() === titulo.toLowerCase()) {
+                    musica = musicaListadas[i];
+                    break;
+                }
+            }
+
+            if (musica === null) {
+                msg_atualizar.innerHTML = "Musica nao encontrada para atualizacao.";
+                return; 
+            }
+
+            musica.anoLancamento = Number(anoStr);
+            msg_atualizar.innerHTML = `Ano de ${musica.titulo} atualizado para ${musica.anoLancamento}`;
+        }
+
+        function mediaAvaliacoes() {
+            let titulo = ipt_media.value.trim();
+
+            // 1. Titulo informado
+            if (titulo === "") {
+                msg_media.innerHTML = "Informe o titulo para calcular a media.";
+                return; 
+            }
+
+            // 2. Procura a musica
+            let musica = null;
+            for (let i = 0; i < musicaListadas.length; i++) {
+                if (musicaListadas[i].titulo.toLowerCase() === titulo.toLowerCase()) {
+                    musica = musicaListadas[i];
+                    break;
+                }
+            }
+
+            if (musica === null) {
+                msg_media.innerHTML = "Musica nao encontrada para calcular media.";
+                return; 
+            }
+
+            let media = calcMedia(musica.avaliacoes);
+            msg_media.innerHTML = `Media de ${musica.titulo}: ${media.toFixed(2)}`;
+        }
+
+        function buscarBandaPorIntegrante() {
+            let integrante = ipt_integrantes.value.trim();
+
+            // 1. Integrante informado
+            if (integrante === "") {
+                msg_buscar.innerHTML = "Informe o integrante para buscar a banda.";
+                return; 
+            }
+
+            // 2. Procura integrante em todas as musicas e coleta bandas
+            let bandas = [];
+
+            for (let i = 0; i < musicaListadas.length; i++) {
+                let musica = musicaListadas[i];
+
+                for (let j = 0; j < musica.integrantes.length; j++) {
+
+                    if (musica.integrantes[j].trim().toLowerCase() === integrante.toLowerCase()) {
+
+                        // Verifica se a banda ja esta na lista antes de adicionar
+                        let bandaJaAdicionada = false;
+                        for (let k = 0; k < bandas.length; k++) {
+                            if (bandas[k] === musica.banda) {
+                                bandaJaAdicionada = true;
+                                break;
+                            }
+                        }
+
+                        if (bandaJaAdicionada === false) {
+                            bandas.push(musica.banda);
+                        }
+
+                        break;
+                    }
+                }
+            }
+
+            if (bandas.length === 0) {
+                msg_buscar.innerHTML = "Integrante nao encontrado nas bandas cadastradas.";
+                return;
+            }
+
+            let listaBandas = "";
+            for (let i = 0; i < bandas.length; i++) {
+                if (i > 0) {
+                    listaBandas = listaBandas + ", ";
+                }
+                listaBandas = listaBandas + bandas[i];
+            }
+
+            msg_buscar.innerHTML = `${integrante} pertence a(s) banda(s): ${listaBandas}`;
+        }
+
+    </script>
+</body>
+</html>
